@@ -4,6 +4,8 @@ import org.apache.cordova.CordovaPlugin;
 import org.apache.cordova.CordovaWebView;
 import org.apache.cordova.CordovaInterface;
 import org.apache.cordova.CallbackContext;
+import org.apache.cordova.CordovaWebViewEngine;
+import org.apache.cordova.engine.SystemWebView;
 import org.json.JSONArray;
 import org.json.JSONException;
 
@@ -22,11 +24,16 @@ public class WebviewSetting extends CordovaPlugin {
         
     }
     @Override
-    public boolean execute(String action, JSONArray args, final CallbackContext callbackContext) throws JSONException {
+    public boolean execute(String action, final JSONArray args, final CallbackContext callbackContext) throws JSONException {
         if ("set".equals(action)) {
             cordova.getActivity().runOnUiThread(new Runnable() {
                 public void run() {
-                    final long minSize = args.getLong(0);
+                    int minSize = 6;
+                    try {
+                        minSize = args.getInt(0);
+                    } catch (JSONException e) {}
+                    CordovaWebViewEngine engine = webView.getEngine();
+                    SystemWebView webView = (SystemWebView)engine.getView();
                     webView.getSettings().setMinimumFontSize(minSize);
                     
                     callbackContext.success();
