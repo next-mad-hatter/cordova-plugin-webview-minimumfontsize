@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin id="com.waverleysoftware.cordova.webviewsetting" version="0.1.0" 
+    xmlns="http://apache.org/cordova/ns/plugins/1.0"
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+    <name>WebViewMinimumFontSize</name>
+    <description>cordova plugin to set minimum fontsize in android</description>
+    <license>MIT</license>
+    <keywords>cordova,webview</keywords>
+    <repo>https://github.com/skostyrko/cordova-plugin-webview-minimumfontsize</repo>
+    <engines>
+        <engine name="cordova" version=">=3.0.0" />
+    </engines>
+    <js-module src="www/WebviewSetting.js" name="WebviewSetting">
+        <clobbers target="plugin.webviewSetting"/>
+    </js-module>
+    <!-- android -->
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="WebviewSetting">
+                <param name="android-package" value="com.waverleysoftware.cordova.webviewsetting.WebviewSetting" />
+            </feature>
+        </config-file>
+        <source-file src="src/android/WebviewSetting.java" target-dir="src/com/waverleysoftware/cordova/webviewsetting" />
+    </platform>
+   
+</plugin>
