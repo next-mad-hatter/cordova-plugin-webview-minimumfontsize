@@ -1,0 +1,11 @@
+{
+    "name": "cordova-plugin-webview-minimumfontsize",
+    "version": "1.0.3",
+    "description": "cordova plugin to set minimum fontsize in android",
+    "cordova": {
+        "id": "cordova-plugin-webview-minimumfontsize",
+        "platforms": [
+            "android"
+        ]
+    }
+}
